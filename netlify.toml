@@ -1,0 +1,5 @@
+# The complete site is already built in dist; no framework build is needed.
+[build]
+  base = "."
+  publish = "dist"
+  command = ""

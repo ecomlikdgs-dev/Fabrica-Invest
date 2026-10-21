@@ -45,3 +45,22 @@ python3 -m http.server 8080 --directory dist
 
 Open `http://localhost:8080/`. No Node.js installation, package installation,
 or build step is needed. For static hosting, set the publish directory to `dist`.
+
+## Deploy on Netlify
+
+The root `netlify.toml` configures Netlify to publish the ready-to-serve `dist`
+directory without running a build command. The homepage is `dist/index.html`;
+publishing the repository root instead will produce a Netlify 404 page.
+
+Connect this repository to Netlify and deploy the `main` branch. The deployment
+settings are:
+
+- Base directory: repository root (`.`)
+- Build command: leave empty
+- Publish directory: `dist`
+
+For an existing Netlify site, deploy the latest `main` commit after pulling this
+configuration. If Netlify continues showing an older deployment, use **Deploys →
+Trigger deploy → Clear cache and deploy site**. The form, payment and legal pages
+are separate directories with their own `index.html` files and work without a
+single-page-app redirect.
