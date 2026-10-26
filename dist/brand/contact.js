@@ -8,6 +8,7 @@
   const status=dialog.querySelector('#contactStatus'),message=dialog.querySelector('textarea'),action=dialog.querySelector('#contactAction');
   let lastFocus=null;
   window.openFabricaContact=function(text){
+    window.FabricaAnalytics?.track('whatsapp_click');
     if(cfg.whatsapp){window.open('https://wa.me/'+cfg.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent(text || 'Hi Fabrica Invest! I have a question about your spy tools and advertising accounts.'),'_blank','noopener,noreferrer');return;}
     lastFocus=document.activeElement;
     message.value=text || 'Hi Fabrica Invest! I have a question about your spy tools and advertising accounts.';

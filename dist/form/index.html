@@ -9,17 +9,15 @@
 <meta content="Enter your details to unlock your Fabrica Invest access — premium spy &amp; AI tools in one login." name="description"/>
 <meta content="noindex, nofollow" name="robots"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
-<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; media-src 'self' data:; connect-src 'self'; form-action 'self' https://wa.me" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com https://*.google.com https://*.g.doubleclick.net; media-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.google.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com; form-action 'self' https://wa.me; frame-src https://www.googletagmanager.com" http-equiv="Content-Security-Policy"/>
 <meta content="Get Started — Fabrica Invest" property="og:title"/>
 <meta content="Unlock premium spy &amp; AI tools in one secure login." property="og:description"/>
 <meta content="https://fabrica-invest-tools.tunedpeach513.chatgpt.site/brand/social.svg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://fabrica-invest-tools.tunedpeach513.chatgpt.site/brand/social.svg" name="twitter:image"/>
 <link href="/brand/mark.svg" rel="icon" type="image/svg+xml"/>
-
 <link as="image" href="/brand/logo.svg" rel="preload"/>
 <link href="/brand/mark.svg" rel="apple-touch-icon"/>
-
 <link as="font" crossorigin="" href="/fonts/inter-latin.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/fonts/jbmono-latin.woff2" rel="preload" type="font/woff2"/>
 <style>
@@ -185,7 +183,7 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 }
 @media(prefers-reduced-motion:reduce){.fab{animation:none}.fab::before{display:none}}
 </style>
-<link href="/brand/fabrica.css" rel="stylesheet"/><script src="/brand/config.js"></script></head>
+<link href="/brand/fabrica.css" rel="stylesheet"/><script src="/brand/config.js"></script><script defer="True" src="/brand/analytics.js"></script></head>
 <body>
 <div aria-hidden="true" class="page-bg"></div>
 <div aria-hidden="true" class="grid-bg"></div>
@@ -201,14 +199,14 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 <!-- FORM VIEW -->
 <div id="formView">
 <div class="steps-bar">
-<div class="step-item active"><div class="step-num">1</div>Your info</div>
+<div class="step-item active"><div class="step-num">1</div>Your details</div>
 <div class="step-line"></div>
-<div class="step-item"><div class="step-num">2</div>Payment</div>
+<div class="step-item"><div class="step-num">2</div>Send enquiry</div>
 <div class="step-line"></div>
-<div class="step-item"><div class="step-num">3</div>Access</div>
+<div class="step-item"><div class="step-num">3</div>Follow-up</div>
 </div>
 <h1 class="card-title">Almost there! 🚀</h1>
-<p class="card-sub">Enter your details so we can deliver your access and stay in touch on WhatsApp.</p>
+<p class="card-sub">Send your chosen package and contact details. We will confirm availability, the final price and how to pay.</p>
 <!-- What they chose on the pricing cards. The plan was always captured;
            it just was never shown, at the one moment it matters most. -->
 <div class="order-sum" hidden="" id="orderSum">
@@ -216,16 +214,16 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 <span class="os-val"><b id="osPlan"></b><span class="os-dot">·</span><span id="osPrice"></span></span>
 <a class="os-change" href="/#plans">Change</a>
 </div>
-<form id="leadForm" novalidate="">
+<form action="/order-received/" data-netlify="true" id="leadForm" method="POST" name="orders" netlify-honeypot="hp_nonce" novalidate=""><input name="currency" type="hidden" value=""/><input name="quoted_price" type="hidden" value=""/><input name="package_name" type="hidden" value=""/><input name="offer_id" type="hidden" value=""/><input name="offer_type" type="hidden" value=""/><input name="order_reference" type="hidden" value=""/><input name="form-name" type="hidden" value="orders"/>
 <div class="field">
 <label class="field-label" for="name">Full Name</label>
-<input autocomplete="name" class="field-input" id="name" placeholder="e.g. Youssef Amrani" type="text"/>
+<input autocomplete="name" class="field-input" id="name" maxlength="120" name="name" placeholder="e.g. Youssef Amrani" required="" type="text"/>
 <div class="field-error" id="nameError">Please enter your name</div>
 </div>
 <div class="field">
 <label class="field-label" for="phone">WhatsApp Number</label>
 <div class="phone-group">
-<input autocomplete="off" class="phone-cc" id="countryCode" list="ccList" placeholder="+212" spellcheck="false" value="+212"/>
+<input autocomplete="off" class="phone-cc" id="countryCode" list="ccList" maxlength="6" name="country_code" placeholder="+212" spellcheck="false" value="+212"/>
 <datalist id="ccList">
 <option value="+212">🇲🇦 +212 Morocco</option>
 <option value="+213">🇩🇿 +213 Algeria</option>
@@ -350,10 +348,10 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 <option value="+61">🇦🇺 +61 Australia</option>
 <option value="+64">🇳🇿 +64 New Zealand</option>
 </datalist>
-<input autocomplete="tel" class="field-input" id="phone" inputmode="numeric" placeholder="6XX XXX XXX" type="tel"/>
+<input autocomplete="tel" class="field-input" id="phone" inputmode="numeric" maxlength="24" name="phone" placeholder="6XX XXX XXX" required="" type="tel"/>
 </div>
 <div class="field-error" id="phoneError">Please enter a valid WhatsApp number</div>
-</div>
+</div><div class="field"><label class="field-label" for="email">Email <span class="optional-field">(optional)</span></label><input autocomplete="email" class="field-input" id="email" maxlength="254" name="email" placeholder="you@example.com" type="email"/><div class="field-error" id="emailError">Please enter a valid email address</div></div><div class="field"><label class="field-label" for="preferredPayment">Preferred payment <span class="optional-field">(optional)</span></label><select class="field-input" id="preferredPayment" name="preferred_payment"><option value="discuss">Discuss payment with me</option><option value="cih">CIH Bank</option><option value="bank">Other Moroccan bank</option><option value="cashplus">CashPlus</option><option value="wise">Wise</option><option value="cash">Cash pickup</option><option value="paypal">PayPal</option><option value="binance">Binance</option><option value="usdt">USDT</option><option value="redotpay">RedotPay</option></select></div><div class="field"><label class="field-label" for="notes">Anything we should know? <span class="optional-field">(optional)</span></label><textarea class="field-input enquiry-notes" id="notes" maxlength="2000" name="notes" placeholder="Tell us what you need." rows="3"></textarea></div>
 <!-- honeypot: real users never see or fill this -->
 <div aria-hidden="true" class="hp-field">
 <label aria-hidden="true" for="hp_nonce">Leave this empty</label>
@@ -361,16 +359,16 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 </div>
 <button class="submit-btn" id="submitBtn" type="submit">
 <span class="spinner"></span>
-<span class="btn-text">Continue to Payment</span>
+<span class="btn-text">Send enquiry</span>
 <span class="arrow">→</span>
-</button>
+</button><p class="submission-error" hidden="" id="submitError" role="alert" tabindex="-1">Your enquiry was not saved. Please try again, or contact Fabrica Invest for help.</p>
 </form>
 <div class="trust-row">
 <span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>Private &amp; secure</span>
 <span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>No spam, ever</span>
 <span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>Instant delivery</span>
 </div>
-<p class="privacy">Your details stay in this browser tab until you choose to share your enquiry on WhatsApp.</p>
+<p class="privacy">By submitting, you ask Fabrica Invest to contact you about this enquiry. This does not take a payment. <a href="/privacy/">Privacy policy</a></p>
 </div>
 <!-- SUCCESS VIEW -->
 <div class="success" id="successView">
@@ -382,7 +380,6 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 </div>
 </div>
 <footer>© 2026 Fabrica Invest</footer>
-
 <a aria-label="Chat on WhatsApp" class="fab" data-contact="true" href="#contact" rel="noopener"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></a>
 <noscript></noscript>
 <script defer="True" src="/brand/contact.js"></script><script defer="True" src="/brand/order.js"></script></body>

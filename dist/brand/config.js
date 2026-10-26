@@ -2,6 +2,7 @@
 // reference provider's phone number, email, social accounts or payment data.
 window.FABRICA = Object.freeze({
   brand: 'Fabrica Invest',
+  analyticsId: 'G-5WW74YEEP0',
   whatsapp: '212650290546',
   email: '',
   socials: {},

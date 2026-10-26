@@ -27,10 +27,10 @@ build step for deployment.
 - Payment recipient details are deliberately empty; no original recipient
   accounts, payment links or collection endpoints are carried across.
 
-The enquiry form stores details only in session storage, and currency preference
-uses local storage. WhatsApp contact buttons open a message for the visitor to
-review and send when the owner number is configured. No external tracking scripts
-or original provider APIs are included.
+Enquiries are saved through Netlify Forms before the visitor reaches the
+confirmation page. Personal contact fields are posted to Netlify; browser session
+storage retains only the package and confirmation reference. WhatsApp is an
+optional contact route. Currency and privacy preferences use local storage.
 
 The supplied raster logo was recreated as a vector wordmark for this preview.
 Replace `dist/brand/logo.svg` with an original vector logo for exact typography.
@@ -64,3 +64,55 @@ configuration. If Netlify continues showing an older deployment, use **Deploys �
 Trigger deploy → Clear cache and deploy site**. The form, payment and legal pages
 are separate directories with their own `index.html` files and work without a
 single-page-app redirect.
+
+## Analytics
+
+Google Analytics 4 is connected to `G-5WW74YEEP0`. The Google tag is loaded only
+after the visitor allows website analytics. Audience demographics is a separate
+choice and controls Google signals and advertising-related consent. Visitors can
+change their choices using **Privacy choices** in the footer. Choices expire
+after 180 days.
+
+The integration records page views, `select_offer`, `form_start`,
+`generate_lead` after a successful saved enquiry, and `whatsapp_click`.
+Names, phone numbers, email addresses and enquiry notes are not included in our
+Analytics events. Lead values are quotes, not completed payments; this site does
+not emit `purchase` events.
+
+In Google Analytics:
+
+1. Use **Realtime** to check a visit after allowing analytics on the website.
+2. Use acquisition reports for visits and sources, and demographic/user-attribute
+   reports for countries. Select the date range and daily, weekly or monthly view.
+3. Enable **Google signals** in the property's data-collection settings if you
+   want age, gender and interests. These require visitor consent and enough data;
+   demographics can remain unknown or thresholded. Site consent does not enable
+   Google signals in the property automatically.
+4. Mark `generate_lead` as a key event to report saved enquiries as conversions.
+   Our custom event measures successful saves; avoid treating automatic form
+   submission attempts as completed enquiries.
+5. Keep automatic user-provided-data collection off. The form's contact data
+   belongs in Netlify Forms, not in Analytics. Disable automatic form-interaction
+   tracking if you want to use only the confirmed-save event supplied here.
+
+Analytics reflects consenting, measurable visitors; it does not reconstruct
+traffic from before installation. Set the property's reporting timezone and
+currency as appropriate (Africa/Casablanca and USD for this business).
+
+## Saved enquiries in Netlify
+
+1. In this project's Netlify dashboard, open **Forms** and select **Enable form
+   detection**. Redeploy after enabling it so Netlify detects the static form.
+2. The detected form is named **orders**. Successful submissions are listed in
+   **Forms → orders**. It includes contact details, package, quoted price,
+   preferred payment, optional notes and a reference beginning `FI-`.
+3. Email notifications are optional: configure them under **Forms → Submission
+   notifications** in your Netlify account.
+
+The form posts to Netlify before displaying `/order-received/`. Failed or timed-out
+submissions show an error and can be retried. Optional analytics is not required
+to submit an enquiry. WhatsApp remains a separate optional contact action and
+is no longer required to deliver the enquiry.
+
+No customer data is stored in GitHub. Netlify form detection and Google property
+settings must be managed by the site owner in their respective dashboards.
