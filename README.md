@@ -67,7 +67,7 @@ single-page-app redirect.
 
 ## Analytics
 
-Google Analytics 4 is connected to `G-5WW74YEEP0`. The Google tag is loaded only
+Google Analytics 4 is connected to `G-Z7F7SVKYRC`. The Google tag is loaded only
 after the visitor allows website analytics. Audience demographics is a separate
 choice and controls Google signals and advertising-related consent. Visitors can
 change their choices using **Privacy choices** in the footer. Choices expire
