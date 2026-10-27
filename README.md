@@ -3,7 +3,7 @@
 Buildless responsive storefront based on the user-provided reference,
 https://walidtoolsprovider.com/, with Fabrica Invest branding, six advertising
 platform services, 14 account offers at owner-supplied USD prices, and three
-priced bundles. The owner WhatsApp is +212650290546. USD is the default currency.
+priced bundles. The owner WhatsApp is +212767398411. USD is the default currency.
 
 Bundles combine the listed account price with the retained reference tool-plan
 price: Meta Launch $37, Media Buyer Pack $62, Growth Stack $120.

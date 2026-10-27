@@ -3,7 +3,7 @@
 window.FABRICA = Object.freeze({
   brand: 'Fabrica Invest',
   analyticsId: 'G-Z7F7SVKYRC',
-  whatsapp: '212650290546',
+  whatsapp: '212767398411',
   email: '',
   socials: {},
   offerPrices: {"profile-bm": 20, "profile-10": 35, "bm-reinstated-10": 55, "bm-reinstated": 28, "bm-id-50": 20, "bm-new": 10, "bm50-old": 11, "bm-250": 40, "bm-4-250": 129, "bm-4-250-reinstated": 165, "page-new": 12, "page-old": 6, "bm-company-new": 169, "bm-company-old": 219},
