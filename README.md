@@ -27,10 +27,11 @@ build step for deployment.
 - Payment recipient details are deliberately empty; no original recipient
   accounts, payment links or collection endpoints are carried across.
 
-Enquiries are saved through Netlify Forms before the visitor reaches the
-confirmation page. Personal contact fields are posted to Netlify; browser session
-storage retains only the package and confirmation reference. WhatsApp is an
-optional contact route. Currency and privacy preferences use local storage.
+Customers select a package and add their contact details, optional email and
+notes, and preferred payment method. The page opens a complete WhatsApp draft
+addressed to the owner. The customer must tap Send in WhatsApp. New details are
+not posted to Netlify Forms or saved in browser storage. Currency and privacy
+preferences still use local storage.
 
 The supplied raster logo was recreated as a vector wordmark for this preview.
 Replace `dist/brand/logo.svg` with an original vector logo for exact typography.
@@ -74,9 +75,11 @@ change their choices using **Privacy choices** in the footer. Choices expire
 after 180 days.
 
 The integration records page views, `select_offer`, `form_start`,
-`generate_lead` after a successful saved enquiry, and `whatsapp_click`.
+`whatsapp_order_start` when a complete order is handed off to WhatsApp, and
+`whatsapp_click` for general contact. A handoff does not prove the message was
+sent. The site no longer emits `generate_lead`.
 Names, phone numbers, email addresses and enquiry notes are not included in our
-Analytics events. Lead values are quotes, not completed payments; this site does
+Analytics events. Displayed prices are quotes, not completed payments; this site does
 not emit `purchase` events.
 
 In Google Analytics:
@@ -88,31 +91,36 @@ In Google Analytics:
    want age, gender and interests. These require visitor consent and enough data;
    demographics can remain unknown or thresholded. Site consent does not enable
    Google signals in the property automatically.
-4. Mark `generate_lead` as a key event to report saved enquiries as conversions.
-   Our custom event measures successful saves; avoid treating automatic form
-   submission attempts as completed enquiries.
-5. Keep automatic user-provided-data collection off. The form's contact data
-   belongs in Netlify Forms, not in Analytics. Disable automatic form-interaction
-   tracking if you want to use only the confirmed-save event supplied here.
+4. Use `whatsapp_order_start` to measure handoffs to WhatsApp. It is an intent
+   event, not a confirmed message, delivery or sale. Retire any `generate_lead`
+   key-event setup used by the previous Netlify checkout.
+5. Keep automatic user-provided-data collection off. Contact details belong in
+   the customer's WhatsApp conversation, not in Analytics. The order handoff
+   uses buttons rather than a tracked outbound message link so the prefilled
+   message is not exposed as an outbound link URL in automatic click events.
 
 Analytics reflects consenting, measurable visitors; it does not reconstruct
 traffic from before installation. Set the property's reporting timezone and
 currency as appropriate (Africa/Casablanca and USD for this business).
 
-## Saved enquiries in Netlify
+## WhatsApp ordering
 
-1. In this project's Netlify dashboard, open **Forms** and select **Enable form
-   detection**. Redeploy after enabling it so Netlify detects the static form.
-2. The detected form is named **orders**. Successful submissions are listed in
-   **Forms → orders**. It includes contact details, package, quoted price,
-   preferred payment, optional notes and a reference beginning `FI-`.
-3. Email notifications are optional: configure them under **Forms → Submission
-   notifications** in your Netlify account.
+1. Choose a spy tools plan, advertising account or bundle. Direct visits to
+   `/form/` ask what the customer wants to order.
+2. Enter name and WhatsApp number, plus optional email, preferred payment and
+   notes. The chosen package and price come from the public catalog.
+3. Select **Continue to WhatsApp**. The official WhatsApp app/web page opens
+   with the complete draft and an `FI-` reference. The customer reviews it and
+   taps **Send**. Fabrica Invest then confirms stock, pricing, payment and access.
 
-The form posts to Netlify before displaying `/order-received/`. Failed or timed-out
-submissions show an error and can be retried. Optional analytics is not required
-to submit an enquiry. WhatsApp remains a separate optional contact action and
-is no longer required to deliver the enquiry.
+The payment-options page also routes through contact details before WhatsApp,
+preserving the package and selected method. Old `/order-received/` links point
+visitors back to this flow; they do not claim a message or purchase succeeded.
+Optional Analytics is not required. No WhatsApp API credentials are needed for
+this customer-initiated handoff. The site cannot send messages automatically or
+verify delivery. Automatic business notifications would require a separately
+configured WhatsApp Business messaging service.
 
-No customer data is stored in GitHub. Netlify form detection and Google property
-settings must be managed by the site owner in their respective dashboards.
+Netlify form detection is no longer needed for new orders. Existing submissions
+in the owner's Netlify account are not deleted by this change. No customer data
+is stored in GitHub or browser storage by this integration.

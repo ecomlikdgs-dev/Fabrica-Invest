@@ -1,6 +1,11 @@
 :root{--green:#ffc324;--green-dim:#dda519;--gold:#ffc324;--gold-dim:#dda519}
 [hidden]{display:none!important}
 .optional-field{font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0}
+.whatsapp-checkout .order-sum{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px 14px}
+.whatsapp-checkout .os-label{grid-column:1/-1}
+.whatsapp-checkout .os-val{display:flex;flex-wrap:wrap;gap:4px 8px;white-space:normal;overflow:visible;overflow-wrap:anywhere}
+.whatsapp-checkout .os-val b{flex-basis:100%}.whatsapp-checkout .os-dot{display:none}.whatsapp-checkout .os-change{align-self:end}
+.whatsapp-checkout>.fab{position:static;margin:0 auto 28px}
 .enquiry-notes{resize:vertical;min-height:90px}
 .submission-error{color:#ffb8b0;border:1px solid #ffb8b044;border-radius:10px;padding:14px;margin:16px 0 0;font-size:13px;line-height:1.6}
 .submit-btn:disabled{opacity:.65;cursor:wait}

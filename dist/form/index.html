@@ -5,13 +5,13 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <meta content="#0a0a0c" name="theme-color"/>
-<title>Get Started — Fabrica Invest</title>
-<meta content="Enter your details to unlock your Fabrica Invest access — premium spy &amp; AI tools in one login." name="description"/>
+<title>Order on WhatsApp — Fabrica Invest</title>
+<meta content="Add your details and send your chosen tools or advertising account to Fabrica Invest on WhatsApp." name="description"/>
 <meta content="noindex, nofollow" name="robots"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <meta content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com https://*.google.com https://*.g.doubleclick.net; media-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.google.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com; form-action 'self' https://wa.me; frame-src https://www.googletagmanager.com" http-equiv="Content-Security-Policy"/>
-<meta content="Get Started — Fabrica Invest" property="og:title"/>
-<meta content="Unlock premium spy &amp; AI tools in one secure login." property="og:description"/>
+<meta content="Order on WhatsApp — Fabrica Invest" property="og:title"/>
+<meta content="Choose your package, add your details and confirm your order on WhatsApp." property="og:description"/>
 <meta content="https://fabrica-invest-tools.tunedpeach513.chatgpt.site/brand/social.svg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://fabrica-invest-tools.tunedpeach513.chatgpt.site/brand/social.svg" name="twitter:image"/>
@@ -184,7 +184,7 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 @media(prefers-reduced-motion:reduce){.fab{animation:none}.fab::before{display:none}}
 </style>
 <link href="/brand/fabrica.css" rel="stylesheet"/><script src="/brand/config.js"></script><script defer="True" src="/brand/analytics.js"></script></head>
-<body>
+<body class="whatsapp-checkout">
 <div aria-hidden="true" class="page-bg"></div>
 <div aria-hidden="true" class="grid-bg"></div>
 <div aria-hidden="true" class="grain"></div>
@@ -201,20 +201,21 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 <div class="steps-bar">
 <div class="step-item active"><div class="step-num">1</div>Your details</div>
 <div class="step-line"></div>
-<div class="step-item"><div class="step-num">2</div>Send enquiry</div>
+<div class="step-item"><div class="step-num">2</div>WhatsApp</div>
 <div class="step-line"></div>
-<div class="step-item"><div class="step-num">3</div>Follow-up</div>
+<div class="step-item"><div class="step-num">3</div>Confirmation</div>
 </div>
-<h1 class="card-title">Almost there! 🚀</h1>
-<p class="card-sub">Send your chosen package and contact details. We will confirm availability, the final price and how to pay.</p>
+<h1 class="card-title">Order on WhatsApp</h1>
+<p class="card-sub">Add your details below. WhatsApp will open with your complete order. Tap Send there, and we will confirm availability, the final price and delivery.</p>
 <!-- What they chose on the pricing cards. The plan was always captured;
            it just was never shown, at the one moment it matters most. -->
 <div class="order-sum" hidden="" id="orderSum">
-<span class="os-label">Your plan:</span>
+<span class="os-label">Your package:</span>
 <span class="os-val"><b id="osPlan"></b><span class="os-dot">·</span><span id="osPrice"></span></span>
 <a class="os-change" href="/#plans">Change</a>
 </div>
-<form action="/order-received/" data-netlify="true" id="leadForm" method="POST" name="orders" netlify-honeypot="hp_nonce" novalidate=""><input name="currency" type="hidden" value=""/><input name="quoted_price" type="hidden" value=""/><input name="package_name" type="hidden" value=""/><input name="offer_id" type="hidden" value=""/><input name="offer_type" type="hidden" value=""/><input name="order_reference" type="hidden" value=""/><input name="form-name" type="hidden" value="orders"/>
+<form action="/form/" id="leadForm" method="POST" novalidate="">
+<div class="field" hidden="" id="requestField"><label class="field-label" for="request">What would you like to order?</label><input class="field-input" id="request" maxlength="200" name="request" placeholder="A spy tools plan or advertising account" type="text"/><div class="field-error" id="requestError">Tell us what you would like to order</div></div>
 <div class="field">
 <label class="field-label" for="name">Full Name</label>
 <input autocomplete="name" class="field-input" id="name" maxlength="120" name="name" placeholder="e.g. Youssef Amrani" required="" type="text"/>
@@ -357,25 +358,20 @@ footer{text-align:center;color:var(--faintest);font-size:12.5px;font-family:'Int
 <label aria-hidden="true" for="hp_nonce">Leave this empty</label>
 <input autocomplete="off" id="hp_nonce" name="hp_nonce" tabindex="-1" type="text"/>
 </div>
-<button class="submit-btn" id="submitBtn" type="submit">
+<button class="submit-btn" disabled="" id="submitBtn" type="submit">
 <span class="spinner"></span>
-<span class="btn-text">Send enquiry</span>
+<span class="btn-text">Continue to WhatsApp</span>
 <span class="arrow">→</span>
-</button><p class="submission-error" hidden="" id="submitError" role="alert" tabindex="-1">Your enquiry was not saved. Please try again, or contact Fabrica Invest for help.</p>
+</button><p class="submission-error" hidden="" id="submitError" role="alert" tabindex="-1">WhatsApp could not be opened. Please try again or contact Fabrica Invest at +212 767 398 411.</p>
 </form>
+<section class="checkout-details" hidden="" id="whatsappReady"><h2>Your WhatsApp message is ready</h2><p>Tap Send in WhatsApp to deliver your order to Fabrica Invest. Opening WhatsApp alone does not send it.</p><pre class="checkout-message" id="orderMessage"></pre><button class="checkout-enquiry" form="leadForm" id="retryWhatsApp" type="submit">Open WhatsApp again</button></section>
+<noscript><p class="privacy">Enable JavaScript to prepare your complete order, or <a href="https://wa.me/212767398411" rel="noreferrer">contact Fabrica Invest on WhatsApp</a>.</p></noscript>
 <div class="trust-row">
 <span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>Private &amp; secure</span>
 <span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>No spam, ever</span>
-<span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>Instant delivery</span>
+<span><svg viewbox="0 0 20 20"><path d="M10 1l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V4l7-3z"></path></svg>Confirm before payment</span>
 </div>
-<p class="privacy">By submitting, you ask Fabrica Invest to contact you about this enquiry. This does not take a payment. <a href="/privacy/">Privacy policy</a></p>
-</div>
-<!-- SUCCESS VIEW -->
-<div class="success" id="successView">
-<div class="success-icon">✓</div>
-<h2>Got it! Redirecting...</h2>
-<p>Taking you to the payment page now.</p>
-<div class="submit-btn loading" style="cursor:default"><span class="spinner"></span><span class="btn-text">Please wait</span></div>
+<p class="privacy">Your details are included in a WhatsApp draft addressed to Fabrica Invest. Review it and tap Send to contact us. No payment is taken here. <a href="/privacy/">Privacy policy</a></p>
 </div>
 </div>
 </div>

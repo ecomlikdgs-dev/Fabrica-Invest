@@ -64,7 +64,7 @@
     }
     document.dispatchEvent(new Event('fabrica:analytics-ready'));
   }
-  const events = new Set(['select_offer','form_start','generate_lead','whatsapp_click','payment_method_select']);
+  const events = new Set(['select_offer','form_start','whatsapp_order_start','whatsapp_click','payment_method_select']);
   window.FabricaAnalytics = Object.freeze({track:function (event, fields) {
     if (!choice.analytics || !loaded || !events.has(event)) return false;
     const source = fields || {};
@@ -87,7 +87,7 @@
   const dialog = document.createElement('dialog');
   dialog.className = 'privacy-dialog';
   dialog.setAttribute('aria-labelledby', 'privacySettingsTitle');
-  dialog.innerHTML = '<h2 id="privacySettingsTitle">Privacy settings</h2><p>The order form works with optional analytics turned off.</p><label><input id="allowAnalytics" type="checkbox"><span><b>Website analytics</b><small>Page views, countries, devices and successful enquiry counts.</small></span></label><label><input id="allowDemographics" type="checkbox"><span><b>Audience demographics</b><small>Google signals may provide aggregated age ranges, gender and interests using Google account advertising data. This requires website analytics.</small></span></label><div class="privacy-dialog-actions"><button type="button" data-privacy="save">Save choices</button><button type="button" data-privacy="cancel">Cancel</button></div>';
+  dialog.innerHTML = '<h2 id="privacySettingsTitle">Privacy settings</h2><p>The order form works with optional analytics turned off.</p><label><input id="allowAnalytics" type="checkbox"><span><b>Website analytics</b><small>Page views, countries, devices and WhatsApp order starts.</small></span></label><label><input id="allowDemographics" type="checkbox"><span><b>Audience demographics</b><small>Google signals may provide aggregated age ranges, gender and interests using Google account advertising data. This requires website analytics.</small></span></label><div class="privacy-dialog-actions"><button type="button" data-privacy="save">Save choices</button><button type="button" data-privacy="cancel">Cancel</button></div>';
   document.body.append(dialog);
   const analytics = dialog.querySelector('#allowAnalytics');
   const demographics = dialog.querySelector('#allowDemographics');

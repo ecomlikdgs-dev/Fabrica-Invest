@@ -1,6 +1,5 @@
 (function(){
   const order=window.fabricaOrder(location.search);
-  let lead={};try{lead=JSON.parse(sessionStorage.getItem('fabrica_enquiry')||'{}');}catch{}
   document.getElementById('checkoutName').textContent=order.label;
   document.getElementById('checkoutPrice').textContent=order.price;
   const methods=[
@@ -14,16 +13,21 @@
     ['usdt','USDT','/img/pay/usdt.png','Confirm the network and address before transferring.'],
     ['redotpay','RedotPay','/img/pay/redotpay.png','Payment through RedotPay.']
   ];
-  let selected='Not selected';
-  function message(){return 'Hi Fabrica Invest!\n'+(lead.name?'Name: '+lead.name+'\n':'')+(lead.phone?'WhatsApp: '+lead.phone+'\n':'')+'Package: '+order.label+'\nPrice: '+order.price+'\nPreferred payment: '+selected+'\nPlease confirm availability, the final price and payment details.';}
+  let selected='Discuss payment with me';
+  let selectedId='discuss';
+  function message(){return 'Package: '+order.label+'\nQuoted price: '+order.price+'\nPreferred payment: '+selected+'\nNext: add your contact details and send your order in WhatsApp.';}
   function update(){document.getElementById('checkoutMessage').textContent=message();}
   methods.forEach(([id,title,icon,description])=>{
     const b=document.createElement('button');b.type='button';b.className='checkout-method';b.setAttribute('aria-pressed','false');b.innerHTML='<img src="'+icon+'" alt=""><span></span>';b.querySelector('span').textContent=title;
-    b.addEventListener('click',()=>{document.querySelectorAll('.checkout-method').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));selected=title;document.getElementById('methodTitle').textContent=title;document.getElementById('methodDescription').textContent=description+' Fabrica Invest will provide the confirmed payment instructions.';update();});
+    b.addEventListener('click',()=>{document.querySelectorAll('.checkout-method').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));selected=title;selectedId=id;document.getElementById('methodTitle').textContent=title;document.getElementById('methodDescription').textContent=description+' Fabrica Invest will provide the confirmed payment instructions.';update();});
     document.getElementById('checkoutMethods').append(b);
   });
-  document.getElementById('checkoutContact').textContent=window.FABRICA.whatsapp?'Continue to WhatsApp':'Prepare my enquiry';
-  document.getElementById('checkoutNotice').textContent=window.FABRICA.whatsapp?'Review the message in WhatsApp before sending.':'WhatsApp contact details are coming soon. You can copy your prepared enquiry.';
-  document.getElementById('checkoutContact').addEventListener('click',()=>window.openFabricaContact(message()));
+  document.getElementById('checkoutContact').textContent='Continue with your details';
+  document.getElementById('checkoutNotice').textContent='Your package and payment preference will be included in your WhatsApp order.';
+  document.getElementById('checkoutContact').addEventListener('click',()=>{
+    const params=new URLSearchParams(order.query);
+    params.set('payment',selectedId);
+    location.assign('/form/?'+params.toString());
+  });
   update();
 })();
